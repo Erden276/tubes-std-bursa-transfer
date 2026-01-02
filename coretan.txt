@@ -1,0 +1,37 @@
+void transferPemain(List &L, string ign, string namaTimAsal, string namaTimTujuan) {
+    cout << "\n--- PROSES TRANSFER: " << ign << " (" << namaTimAsal << " -> " << namaTimTujuan << ") ---" << endl;
+
+    adrTim P_Asal = findTim(L, namaTimAsal);
+    adrTim P_Tujuan = findTim(L, namaTimTujuan);
+
+    if (P_Asal != nullptr && P_Tujuan != nullptr) {
+        adrPemain P_Player = nullptr;
+        adrPemain temp = P_Asal->firstPemain;
+        while (temp != nullptr) {
+            if (temp->info.ign == ign) {
+                P_Player = temp;
+                break;
+            }
+            temp = temp->next;
+        }
+        if (P_Player != nullptr) {
+            if (P_Tujuan->info.budget >= P_Player->info.hargaPasar) {
+                P_Tujuan->info.budget -= P_Player->info.hargaPasar;
+                P_Asal->info.budget += P_Player->info.hargaPasar;
+
+                adrPemain P_Pindahan;
+                deletePemainSpesifik(P_Asal, ign, P_Pindahan);
+                insertPemain(P_Tujuan, P_Pindahan);
+
+                cout << "[SUKSES] Transfer " << ign << " Berhasil!" << endl;
+            }else {
+                cout << "[GAGAL] Budget " << namaTimTujuan << " tidak mencukupi!" << endl;
+            }
+
+        } else {
+            cout << "[GAGAL] Pemain " << ign << " tidak ada di " << namaTimAsal << endl;
+        }
+    } else {
+        cout << "[GAGAL] Tim Asal atau Tujuan tidak ditemukan." << endl;
+    }
+}

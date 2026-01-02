@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1766460922 source:d:\file daf\s3\struktur data\tubes\bursa_tim\bursa_tim.cpp
+	"bursa_tim.h"
+
+1766460904 d:\file daf\s3\struktur data\tubes\bursa_tim\bursa_tim.h
+	<iostream>
+	<string>
+
+1766458598 source:d:\file daf\s3\struktur data\tubes\bursa_tim\main.cpp
+	"bursa_tim.h"
+	<iostream>
+
+1765328404 source:d:\file daf\s3\struktur data\tubes\bursa_tim\data.cpp
+
